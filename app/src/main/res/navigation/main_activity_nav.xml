@@ -29,6 +29,6 @@
         tools:layout="@layout/fragment_person_detail_screen" >
         <argument
             android:name="person"
-            app:argType="com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.Persons" />
+            app:argType="com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity.Persons" />
     </fragment>
 </navigation>

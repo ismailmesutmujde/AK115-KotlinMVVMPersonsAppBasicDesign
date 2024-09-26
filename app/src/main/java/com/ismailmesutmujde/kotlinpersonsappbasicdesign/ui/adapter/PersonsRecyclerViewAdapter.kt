@@ -1,14 +1,15 @@
 package com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.Persons
+import com.ismailmesutmujde.kotlinpersonsappbasicdesign.R
+import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity.Persons
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.databinding.PersonCardDesignBinding
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.fragment.MainScreenFragmentDirections
 
@@ -25,7 +26,7 @@ class PersonsRecyclerViewAdapter(private val mContext : Context,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignHolder {
         val layoutInflater = LayoutInflater.from(mContext)
-        val design = PersonCardDesignBinding.inflate(layoutInflater, parent, false)
+        val design :PersonCardDesignBinding = DataBindingUtil.inflate(layoutInflater, R.layout.person_card_design, parent, false)
         return CardDesignHolder(design)
     }
 
@@ -38,7 +39,7 @@ class PersonsRecyclerViewAdapter(private val mContext : Context,
         val person = personsList.get(position)
         val d = holder.design
 
-        d.textViewPersonInfo.text = "${person.person_name} - ${person.person_phone}"
+        d.personObject = person
 
         d.personCard.setOnClickListener {
             val transition = MainScreenFragmentDirections.actionMainScreenFragmentToPersonDetailScreenFragment(person = person)

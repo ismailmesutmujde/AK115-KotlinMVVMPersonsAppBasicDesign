@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
+import com.ismailmesutmujde.kotlinpersonsappbasicdesign.R
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.databinding.FragmentPersonDetailScreenBinding
 
 class PersonDetailScreenFragment : Fragment() {
@@ -15,25 +17,20 @@ class PersonDetailScreenFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        bindingPersonDetailScree = FragmentPersonDetailScreenBinding.inflate(inflater, container, false)
+        bindingPersonDetailScree = DataBindingUtil.inflate(inflater, R.layout.fragment_person_detail_screen,container, false)
 
-        bindingPersonDetailScree.toolbarPersonDetailScreen.title = "Person Detail"
+        bindingPersonDetailScree.personDetailFragment = this
+        bindingPersonDetailScree.personDetailToolbarTitle = "Person Detail"
+
         val bundle: PersonDetailScreenFragmentArgs by navArgs()
         val incomingPerson = bundle.person
 
-        bindingPersonDetailScree.editTextUpdatePersonName.setText(incomingPerson.person_name)
-        bindingPersonDetailScree.editTextUpdatePersonPhone.setText(incomingPerson.person_phone)
+        bindingPersonDetailScree.personObject = incomingPerson
 
-        bindingPersonDetailScree.buttonUpdate.setOnClickListener {
-            val person_name = bindingPersonDetailScree.editTextUpdatePersonName.text.toString()
-            val person_phone = bindingPersonDetailScree.editTextUpdatePersonPhone.text.toString()
-
-            update(incomingPerson.person_id, person_name, person_phone)
-        }
         return bindingPersonDetailScree.root
     }
 
-    fun update(person_id:Int, person_name:String, person_phone:String) {
+    fun buttonUpdate(person_id:Int, person_name:String, person_phone:String) {
         Log.e("Person Record", "${person_id} - ${person_name} - ${person_phone}")
     }
 

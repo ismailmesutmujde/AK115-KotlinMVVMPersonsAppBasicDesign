@@ -12,11 +12,12 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.R
-import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.Persons
+import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity.Persons
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.databinding.FragmentMainScreenBinding
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.adapter.PersonsRecyclerViewAdapter
 
@@ -26,12 +27,12 @@ class MainScreenFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        bindingMainScreen = FragmentMainScreenBinding.inflate(inflater, container, false)
+        bindingMainScreen = DataBindingUtil.inflate(inflater, R.layout.fragment_main_screen, container, false)
+        bindingMainScreen.mainScreenFragment = this
 
-        bindingMainScreen.toolbarMainScreen.title = "Persons"
+        bindingMainScreen.mainScreenToolbarTitle = "Persons"
         (activity as AppCompatActivity).setSupportActionBar(bindingMainScreen.toolbarMainScreen)
 
-        bindingMainScreen.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val personList = ArrayList<Persons>()
         val p1 = Persons(1, "Ahmet","111111")
         val p2 = Persons(2, "Zeynep","222222")
@@ -56,11 +57,7 @@ class MainScreenFragment : Fragment(), SearchView.OnQueryTextListener {
         personList.add(p10)
 
         val adapter = PersonsRecyclerViewAdapter(requireContext(), personList)
-        bindingMainScreen.recyclerView.adapter = adapter
-
-        bindingMainScreen.fab.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_mainScreenFragment_to_personRecordScreenFragment)
-        }
+        bindingMainScreen.personsRecyclerViewAdapter = adapter
 
         requireActivity().addMenuProvider(object : MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -77,6 +74,10 @@ class MainScreenFragment : Fragment(), SearchView.OnQueryTextListener {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         return bindingMainScreen.root
+    }
+
+    fun fabClick(it:View) {
+        Navigation.findNavController(it).navigate(R.id.action_mainScreenFragment_to_personRecordScreenFragment)
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {

@@ -1,4 +1,4 @@
-package com.ismailmesutmujde.kotlinpersonsappbasicdesign.data
+package com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity
 
 import java.io.Serializable
 
