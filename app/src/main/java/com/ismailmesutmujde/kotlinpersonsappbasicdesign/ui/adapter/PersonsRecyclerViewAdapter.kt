@@ -12,9 +12,11 @@ import com.ismailmesutmujde.kotlinpersonsappbasicdesign.R
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity.Persons
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.databinding.PersonCardDesignBinding
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.fragment.MainScreenFragmentDirections
+import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.viewmodel.MainScreenViewModel
 
 class PersonsRecyclerViewAdapter(private val mContext : Context,
-                                 private var personsList : List<Persons>)
+                                 private var personsList : List<Persons>,
+                                 var viewModelMainScreen : MainScreenViewModel)
     : RecyclerView.Adapter<PersonsRecyclerViewAdapter.CardDesignHolder>() {
 
     inner class CardDesignHolder(design : PersonCardDesignBinding) : RecyclerView.ViewHolder(design.root) {
@@ -49,7 +51,7 @@ class PersonsRecyclerViewAdapter(private val mContext : Context,
         d.imageViewDelete.setOnClickListener {
             Snackbar.make(it,"Delete ${person.person_name}?", Snackbar.LENGTH_LONG)
                 .setAction("YES") {
-                    Log.e("Person Delete", person.person_id.toString())
+                    viewModelMainScreen.delete(person.person_id)
                 }.show()
 
         }

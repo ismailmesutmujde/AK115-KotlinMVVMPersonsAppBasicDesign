@@ -7,13 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.R
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.databinding.FragmentPersonDetailScreenBinding
+import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.viewmodel.PersonDetailScreenViewModel
+
 
 class PersonDetailScreenFragment : Fragment() {
 
     private lateinit var bindingPersonDetailScree : FragmentPersonDetailScreenBinding
+    private lateinit var viewModelPersonDetailScreen : PersonDetailScreenViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -30,8 +34,14 @@ class PersonDetailScreenFragment : Fragment() {
         return bindingPersonDetailScree.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel : PersonDetailScreenViewModel by viewModels()
+        viewModelPersonDetailScreen = tempViewModel
+    }
+
     fun buttonUpdate(person_id:Int, person_name:String, person_phone:String) {
-        Log.e("Person Record", "${person_id} - ${person_name} - ${person_phone}")
+        viewModelPersonDetailScreen.update(person_id, person_name, person_phone)
     }
 
 
