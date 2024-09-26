@@ -21,6 +21,7 @@ import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity.Persons
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.databinding.FragmentMainScreenBinding
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.adapter.PersonsRecyclerViewAdapter
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.viewmodel.MainScreenViewModel
+import com.ismailmesutmujde.kotlinpersonsappbasicdesign.util.makeTransition
 
 
 class MainScreenFragment : Fragment(), SearchView.OnQueryTextListener {
@@ -66,7 +67,7 @@ class MainScreenFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     fun fabClick(it:View) {
-        Navigation.findNavController(it).navigate(R.id.action_mainScreenFragment_to_personRecordScreenFragment)
+        Navigation.makeTransition(it,R.id.action_mainScreenFragment_to_personRecordScreenFragment)
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {

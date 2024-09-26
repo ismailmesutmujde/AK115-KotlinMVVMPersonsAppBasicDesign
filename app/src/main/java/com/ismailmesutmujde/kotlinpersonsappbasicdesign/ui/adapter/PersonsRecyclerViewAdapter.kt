@@ -13,6 +13,7 @@ import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity.Persons
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.databinding.PersonCardDesignBinding
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.fragment.MainScreenFragmentDirections
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.viewmodel.MainScreenViewModel
+import com.ismailmesutmujde.kotlinpersonsappbasicdesign.util.makeTransition
 
 class PersonsRecyclerViewAdapter(private val mContext : Context,
                                  private var personsList : List<Persons>,
@@ -45,7 +46,7 @@ class PersonsRecyclerViewAdapter(private val mContext : Context,
 
         d.personCard.setOnClickListener {
             val transition = MainScreenFragmentDirections.actionMainScreenFragmentToPersonDetailScreenFragment(person = person)
-            Navigation.findNavController(it).navigate(transition)
+            Navigation.makeTransition(it, transition)
         }
 
         d.imageViewDelete.setOnClickListener {
