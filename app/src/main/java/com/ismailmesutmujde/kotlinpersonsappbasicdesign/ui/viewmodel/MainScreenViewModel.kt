@@ -1,14 +1,15 @@
 package com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity.Persons
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.repository.PersonsDaoRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainScreenViewModel : ViewModel() {
+@HiltViewModel
+class MainScreenViewModel @Inject constructor(var pRepo : PersonsDaoRepository) : ViewModel() {
 
-    val pRepo = PersonsDaoRepository()
     var personsList = MutableLiveData<List<Persons>>()
 
     init {

@@ -17,13 +17,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.R
-import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity.Persons
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.databinding.FragmentMainScreenBinding
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.adapter.PersonsRecyclerViewAdapter
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.viewmodel.MainScreenViewModel
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.util.makeTransition
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainScreenFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var bindingMainScreen : FragmentMainScreenBinding
@@ -41,7 +41,6 @@ class MainScreenFragment : Fragment(), SearchView.OnQueryTextListener {
             val adapter = PersonsRecyclerViewAdapter(requireContext(), it, viewModelMainScreen)
             bindingMainScreen.personsRecyclerViewAdapter = adapter
         }
-
 
         requireActivity().addMenuProvider(object : MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
