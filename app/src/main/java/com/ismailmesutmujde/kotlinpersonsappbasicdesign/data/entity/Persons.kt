@@ -4,14 +4,23 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull*/
+import com.google.firebase.database.IgnoreExtraProperties
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+@IgnoreExtraProperties
+data class Persons (var person_id : String? = "",
+                    var person_name : String? ="",
+                    var person_phone : String? ="") : Serializable {
+}
+
+
 // coding for Retrofit
+/*
 data class Persons (@SerializedName("kisi_id") var person_id : Int,
                     @SerializedName("kisi_ad") var person_name : String,
                     @SerializedName("kisi_tel") var person_phone : String) : Serializable {
-}
+}*/
 
 // coding for Room
 /*

@@ -1,6 +1,8 @@
 package com.ismailmesutmujde.kotlinpersonsappbasicdesign.di
 
 import android.content.Context
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 //import androidx.room.Room
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.repository.PersonsDaoRepository
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.retrofit.PersonsDaoInterface
@@ -18,6 +20,22 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
+    // these codes are for the firebase
+    @Provides
+    @Singleton
+    fun providePersonsDaoRepository(refPersons:DatabaseReference) : PersonsDaoRepository {
+        return PersonsDaoRepository(refPersons)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDatabaseReference() : DatabaseReference {
+        val db = FirebaseDatabase.getInstance()
+        return db.getReference("persons")
+    }
+
+
+    /* these codes are for the retrofit
     @Provides
     @Singleton
     fun providePersonsDaoRepository(pdao:PersonsDaoInterface) : PersonsDaoRepository {
@@ -28,7 +46,7 @@ class AppModule {
     @Singleton
     fun providePersonsDao() : PersonsDaoInterface {
         return ApiUtils.getPersonsDaoInterface()
-    }
+    }*/
 
 
     /* these codes are for the room

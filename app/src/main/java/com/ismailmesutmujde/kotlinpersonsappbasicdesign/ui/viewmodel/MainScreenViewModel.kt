@@ -21,7 +21,7 @@ class MainScreenViewModel @Inject constructor(var pRepo : PersonsDaoRepository) 
         pRepo.personSearch(searchingWord)
     }
 
-    fun delete(person_id: Int) {
+    fun delete(person_id: String) {
         pRepo.personDelete(person_id)
     }
 

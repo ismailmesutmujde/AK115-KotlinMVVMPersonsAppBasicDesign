@@ -52,7 +52,7 @@ class PersonsRecyclerViewAdapter(private val mContext : Context,
         d.imageViewDelete.setOnClickListener {
             Snackbar.make(it,"Delete ${person.person_name}?", Snackbar.LENGTH_LONG)
                 .setAction("YES") {
-                    viewModelMainScreen.delete(person.person_id)
+                    viewModelMainScreen.delete(person.person_id!!)
                 }.show()
 
         }

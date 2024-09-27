@@ -4,6 +4,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -60,6 +61,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -83,6 +85,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
     implementation("com.google.code.gson:gson:$gson_version")
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+
 }
 
 kapt {

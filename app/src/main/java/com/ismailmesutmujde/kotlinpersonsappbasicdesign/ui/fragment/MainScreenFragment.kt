@@ -81,8 +81,9 @@ class MainScreenFragment : Fragment(), SearchView.OnQueryTextListener {
         return true
     }
 
+    /*
     override fun onResume() {
         super.onResume()
         viewModelMainScreen.loadingPersons()
-    }
+    }*/
 }
