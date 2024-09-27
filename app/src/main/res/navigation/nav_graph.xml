@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_activity_nav"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/mainScreenFragment">
 
     <fragment
@@ -11,10 +11,10 @@
         android:label="fragment_main_screen"
         tools:layout="@layout/fragment_main_screen" >
         <action
-            android:id="@+id/action_mainScreenFragment_to_personDetailScreenFragment"
+            android:id="@+id/action_main_to_personDetail"
             app:destination="@id/personDetailScreenFragment" />
         <action
-            android:id="@+id/action_mainScreenFragment_to_personRecordScreenFragment"
+            android:id="@+id/action_main_to_personRecord"
             app:destination="@id/personRecordScreenFragment" />
     </fragment>
     <fragment

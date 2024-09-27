@@ -1,4 +1,4 @@
-package com.ismailmesutmujde.kotlinpersonsappbasicdesign.dependencyinjection
+package com.ismailmesutmujde.kotlinpersonsappbasicdesign.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

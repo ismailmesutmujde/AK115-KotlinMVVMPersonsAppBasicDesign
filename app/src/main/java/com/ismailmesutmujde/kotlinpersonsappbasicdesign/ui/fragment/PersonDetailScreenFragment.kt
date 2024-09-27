@@ -30,7 +30,6 @@ class PersonDetailScreenFragment : Fragment() {
         val incomingPerson = bundle.person
 
         bindingPersonDetailScree.personObject = incomingPerson
-
         return bindingPersonDetailScree.root
     }
 

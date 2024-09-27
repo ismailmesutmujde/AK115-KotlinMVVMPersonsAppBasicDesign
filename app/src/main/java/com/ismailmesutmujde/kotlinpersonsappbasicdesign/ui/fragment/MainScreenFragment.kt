@@ -66,7 +66,7 @@ class MainScreenFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     fun fabClick(it:View) {
-        Navigation.makeTransition(it,R.id.action_mainScreenFragment_to_personRecordScreenFragment)
+        Navigation.makeTransition(it,R.id.action_main_to_personRecord)
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {

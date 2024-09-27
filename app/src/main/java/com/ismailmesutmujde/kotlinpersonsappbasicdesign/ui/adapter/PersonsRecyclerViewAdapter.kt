@@ -1,7 +1,6 @@
 package com.ismailmesutmujde.kotlinpersonsappbasicdesign.ui.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -45,7 +44,8 @@ class PersonsRecyclerViewAdapter(private val mContext : Context,
         d.personObject = person
 
         d.personCard.setOnClickListener {
-            val transition = MainScreenFragmentDirections.actionMainScreenFragmentToPersonDetailScreenFragment(person = person)
+
+            val transition = MainScreenFragmentDirections.actionMainToPersonDetail(person = person)
             Navigation.makeTransition(it, transition)
         }
 

@@ -13,6 +13,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+
     }
 
     defaultConfig {
@@ -43,6 +44,11 @@ android {
     }
 }
 
+val viewmodel_version = "2.8.6"
+val hilt_version = "2.51.1"
+val room_version = "2.6.1"
+val lifecycle_version = "2.8.6"
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -57,11 +63,20 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel:2.3.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:$viewmodel_version")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
+
+    // Room
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
+    // Coroutine
+    implementation("androidx.room:room-ktx:$room_version")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+
 }
 
 kapt {
