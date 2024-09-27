@@ -35,7 +35,7 @@ class PersonRecordScreenFragment : Fragment() {
     }
 
     fun buttonSave(person_name:String, person_phone:String) {
-        viewModelPersonRecordScreen.record(person_name, person_phone)
+        viewModelPersonRecordScreen.insert(person_name, person_phone)
     }
 
 }

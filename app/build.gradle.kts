@@ -48,6 +48,8 @@ val viewmodel_version = "2.8.6"
 val hilt_version = "2.51.1"
 val room_version = "2.6.1"
 val lifecycle_version = "2.8.6"
+val retrofit_version = "2.9.0"
+val gson_version = "2.10.1"
 
 dependencies {
 
@@ -70,13 +72,17 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
 
     // Room
-    implementation("androidx.room:room-runtime:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
+    //implementation("androidx.room:room-runtime:$room_version")
+    //kapt("androidx.room:room-compiler:$room_version")
 
     // Coroutine
-    implementation("androidx.room:room-ktx:$room_version")
+    //implementation("androidx.room:room-ktx:$room_version")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
 
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
+    implementation("com.google.code.gson:gson:$gson_version")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
 }
 
 kapt {

@@ -9,7 +9,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PersonRecordScreenViewModel @Inject constructor(var pRepo : PersonsDaoRepository) : ViewModel() {
 
-    fun record(person_name:String, person_phone:String) {
-        pRepo.personRecord(person_name, person_phone)
+    fun insert(person_name:String, person_phone:String) {
+        pRepo.personInsert(person_name, person_phone)
     }
 }

@@ -1,10 +1,11 @@
 package com.ismailmesutmujde.kotlinpersonsappbasicdesign.room
-
+/*
 import androidx.room.*
 import com.ismailmesutmujde.kotlinpersonsappbasicdesign.data.entity.Persons
 
 @Dao
 interface PersonsDao {
+
     @Query("SELECT * FROM persons")
     suspend fun allPersons() : List<Persons>
 
@@ -19,4 +20,4 @@ interface PersonsDao {
 
     @Delete
     suspend fun deletePerson(person:Persons)
-}
+}*/
